@@ -879,6 +879,10 @@ boost_library(
         # boost::locale implementation uses deprecated auto_ptr
         "-Wno-deprecated-declarations",
     ],
+    linkopts = select({
+        ":osx_x86_64": [ "-liconv" ],
+        "//conditions:default": [],
+    }),
     deps = [
         ":assert",
         ":config",
@@ -1849,5 +1853,14 @@ boost_library(
         ":typeof",
         ":unordered",
         ":xpressive",
+    ],
+)
+
+boost_library(
+    name = "yap",
+    deps = [
+        ":hana",
+        ":preprocessor",
+        ":type_index",
     ],
 )
