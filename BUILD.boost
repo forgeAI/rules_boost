@@ -1449,6 +1449,10 @@ boost_library(
 
 boost_library(
     name = "system",
+    defines = [
+        "BOOST_SYSTEM_STATIC_LINK=1",
+        "BOOST_ERROR_CODE_HEADER_ONLY",
+    ],
     deps = [
         ":assert",
         ":cerrno",
